@@ -1,0 +1,31 @@
+{
+  "verification_date": "2026-10-16",
+  "scope": "Docker startup, health/readiness and one real image inference request",
+  "docker_desktop_version": "4.95.0",
+  "docker_engine_version": "29.8.2",
+  "compose_version": "5.6.0",
+  "service": "inspector",
+  "host_url": "http://127.0.0.1:8001",
+  "container_port": 8000,
+  "container_health": "healthy",
+  "readiness_response": {
+    "status": "ready",
+    "model_version": "resnet18-frozen-v1"
+  },
+  "prediction_request": {
+    "method": "POST",
+    "path": "/predict",
+    "image": "reports/examples/defective_1.jpg",
+    "content_type": "image/jpeg"
+  },
+  "prediction_response": {
+    "predicted_class": "Defective",
+    "confidence": 0.6455605626106262,
+    "defect_probability": 0.6455605626106262,
+    "threshold": 0.3600000000000001,
+    "model_version": "resnet18-frozen-v1",
+    "request_id": "cf305785a210480382ee3f46f74a5444",
+    "latency_ms": 35.349
+  },
+  "limitations": "Single inference smoke test; not a container throughput/latency benchmark or the full integration suite."
+}

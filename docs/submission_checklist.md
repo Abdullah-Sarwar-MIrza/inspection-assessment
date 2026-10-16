@@ -15,7 +15,7 @@ and deployment configuration listed below.
 | Evaluation results and confusion matrix | `reports/RESULTS.md`, `reports/metrics.json`, `reports/figures/` |
 | False-positive / false-negative analysis | `docs/error_analysis.md`, `reports/errors.json` |
 | Example images and predictions | `reports/examples/`, `reports/example_predictions.json` |
-| Docker deployment | `Dockerfile`, `compose.yaml`, README deployment instructions |
+| Docker deployment | `Dockerfile`, `compose.yaml`, `docs/docker_guide.md` |
 | Inference integration tests | `tests/test_service.py` |
 | Repeatable API and browser verification | `scripts/validate_and_report.py`, `scripts/verify_ui.py` |
 | Checks performed and limits | `docs/verification.md` |

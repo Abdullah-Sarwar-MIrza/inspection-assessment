@@ -140,6 +140,9 @@ No factory operating threshold or SLA is established by this assessment.
 
 ## Optional Docker deployment and maintenance
 
+See the [Docker operating guide](docs/docker_guide.md) for startup, image
+uploads, health checks, logs, shutdown and troubleshooting.
+
 ```powershell
 docker compose up --build -d
 curl.exe http://127.0.0.1:8000/health/ready
@@ -155,9 +158,9 @@ The container runs as a non-root user with a read-only filesystem, a bounded
 temporary directory, CPU/memory limits and one Uvicorn worker. It loads a local
 SHA-256-checked artifact at startup and warms up inference. Serving uses two
 Torch threads, one active model call, and a concurrency limit of 16. Scale
-replicas after measuring representative load. The Docker image was built and its container health check passed. Container
-inference was not separately verified. See
-`docs/verification.md` for the verification scope.
+replicas after measuring representative load. The Docker image built successfully, became healthy and returned a real image
+prediction through the container API. Evidence is recorded in
+`reports/docker_verification.json`; see `docs/verification.md` for the scope.
 
 The service rejects unsupported media, malformed/truncated images, files above
 8 MiB, requests above the multipart body limit, images below 32px in either
