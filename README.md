@@ -1,5 +1,8 @@
 # Casting Defect Inspection
 
+> **Demo video:** [Open the video and download page](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/tag/assessment-demo)<br>
+> [Download the MP4 recording directly](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4) · Duration: **3 minutes 51 seconds**.
+
 A reproducible visual inspection system that classifies pump-impeller casting
 images as **Normal** or **Defective**, with a trained transfer-learning model,
 FastAPI service, dataset audit, evaluation evidence and deployment files.
