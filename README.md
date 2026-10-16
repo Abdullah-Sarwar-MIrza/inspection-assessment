@@ -11,15 +11,8 @@ Start with [measured results](reports/RESULTS.md), the
 [architecture diagram](docs/architecture.md), and the
 [technical explanation](docs/technical_decisions.md). The
 [assessment report](docs/assessment_report.pdf) provides a formatted overview
-of the system, measured results and limitations.
-
-## Recorded demonstration
-
-**[Watch or download the recorded demonstration](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4)**
-
-Duration: **3 minutes 51 seconds**. The original MP4 is available through the
-[GitHub release](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/tag/assessment-demo); it is hosted separately from Git source files
-because its size exceeds GitHub's normal per-file Git limit.
+of the system, measured results and limitations. Recording details and its
+checksum are in [docs/demo.md](docs/demo.md).
 
 ![Visual inspection workspace](reports/figures/ui-desktop.png)
 
@@ -71,12 +64,12 @@ for this assessment and evaluation. Obtain suitable data rights and validate
 on the target production line before commercial use.
 
 The provided 300×300 collection contains 6,633 training images (3,758 defective,
-2,875 normal) and 715 test images (453 defective, 262 normal). Decode every
-image and audit dimensions, modes, class counts and pixel hashes. Remove exact
-train duplicates, including any matching the supplied test set. Split the
-remaining training pool 80/20 with seed 42 and stratified labels. Save every
-assignment and hash in `reports/split_manifest.csv`. The supplied test set stays
-held out during model and threshold selection.
+2,875 normal) and 715 test images (453 defective, 262 normal). The audit decodes
+every image and records dimensions, modes, class counts and pixel hashes. Exact
+training duplicates, including matches to the supplied test set, are excluded.
+The remaining training pool is split 80/20 with seed 42 and stratified labels.
+Assignments and hashes are saved in `reports/split_manifest.csv`. The supplied
+test set stays held out during model and threshold selection.
 
 The separate 512×512 source collection is excluded because its relationship to
 the pre-augmented 300px images cannot establish independent physical products.
@@ -88,27 +81,28 @@ this image-level benchmark, not independent factory generalization.
 ## Model and training
 
 ImageNet-pretrained ResNet-18 supplies a 512-value global pooled feature vector.
-Keep the backbone frozen in evaluation mode and train a balanced, L2-regularized
-logistic head on standardized features. The scaler sees only training features.
+The backbone remains frozen in evaluation mode; a balanced, L2-regularized
+logistic head is fitted on standardized features. The scaler sees only training features.
 The final scaler and classifier coefficients are embedded in a Torch model,
 so serving has no scikit-learn dependency or pickle estimator.
 
-Convert grayscale/RGB inputs to RGB, resize the entire image to 160×160 without
-cropping, and apply ImageNet channel normalization. The lower resolution is a
+Preprocessing converts inputs to RGB, resizes the entire image to 160×160
+without cropping, and applies ImageNet channel normalization. The lower resolution is a
 CPU latency compromise and may obscure tiny defects. Each training image also
 gets one deterministic mirrored view with a small ±8° rotation. Validation and
 test receive no augmentation. The head uses inverse-frequency class weights;
 there is no synthetic oversampling of the validation or test sets.
 
-Choose regularization `C` from `[0.001, 0.01, 0.1, 1, 10]` and thresholds from
-0.10 to 0.90 in steps of 0.02 using validation only. Maximize defect F2 subject
-to at least 95% validation precision; fall back to maximum F2 if infeasible.
+Regularization `C` is selected from `[0.001, 0.01, 0.1, 1, 10]` and thresholds
+from 0.10 to 0.90 in steps of 0.02 using validation only. Selection maximizes
+defect F2 subject to at least 95% validation precision, with maximum F2 as
+the fallback if that precision constraint is infeasible.
 F2 gives recall more weight because a missed defective part can escape inspection.
 The precision floor is an explicit assessment assumption, to be replaced by
-the client's actual scrap/rework/escape costs. Do not adjust this threshold
-after reading test results. No validation refit is performed.
+the client's actual scrap/rework/escape costs. The threshold is locked before
+test evaluation. No validation refit is performed.
 
-Download/extract the Kaggle dataset yourself into this layout:
+Training expects the extracted Kaggle dataset in this layout:
 
 ```text
 casting_data/casting_data/
@@ -126,9 +120,9 @@ casting_data/casting_data/
 ```
 
 The first training run downloads standard ResNet-18 weights. Training overwrites
-artifacts and reports; keep a copy before experimenting. Feature caches are
+artifacts and reports; previous versions can be retained for comparison. Feature caches are
 keyed by ordered pixel hashes, paths and preprocessing/augmentation recipe.
-Delete `reports/cache` to force extraction. Exact numerical reproducibility may
+Removing `reports/cache` forces feature extraction. Exact numerical reproducibility may
 vary across library versions or hardware; pinned direct dependencies and the
 recorded environment help reproduce this run.
 
@@ -169,8 +163,9 @@ The container runs as a non-root user with a read-only filesystem, a bounded
 temporary directory, CPU/memory limits and one Uvicorn worker. It loads a local
 SHA-256-checked artifact at startup and warms up inference. Serving uses two
 Torch threads, one active model call, and a concurrency limit of 16. Scale
-replicas after measuring representative load. The Docker image built successfully, became healthy and returned a real image
-prediction through the container API. Evidence is recorded in
+replicas after measuring representative load. The Docker image built
+successfully, became healthy and returned a real image prediction through the
+container API. Evidence is recorded in
 `reports/docker_verification.json`; see `docs/verification.md` for the scope.
 
 The service rejects unsupported media, malformed/truncated images, files above

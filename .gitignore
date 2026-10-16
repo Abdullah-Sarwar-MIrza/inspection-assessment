@@ -6,8 +6,6 @@ casting_data/
 casting_512x512/
 *.pdf
 !docs/assessment_report.pdf
-reports/demo_frames/
-reports/demo_audio/
 reports/cache/
 reports/training.log
 reports/server.log
@@ -19,15 +17,6 @@ reports/environment-freeze.txt
 reports/ui-server*.log
 reports/ui-browser*.log
 .installers/
-
-# Local preparation files excluded from the assessment submission.
-/scripts/build_demo.py
-/scripts/finalize_submission.py
-/scripts/publish_github.py
-/docs/demo.mp4
-/docs/demo_script.md
-/reports/video_verification.json
-/reports/figures/report_preview.png
 
 /Technical Skills Assessment Demo.mp4
 
