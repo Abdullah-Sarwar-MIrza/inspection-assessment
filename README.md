@@ -6,8 +6,9 @@ FastAPI service, dataset audit, evaluation evidence and deployment files.
 
 Start with [measured results](reports/RESULTS.md), the
 [architecture diagram](docs/architecture.md), and the
-[technical explanation](docs/technical_decisions.md). The generated demonstration
-is `docs/demo.mp4`; narration and reproduction steps are in `docs/demo_script.md`.
+[technical explanation](docs/technical_decisions.md). A separate 2-3 minute
+screen recording demonstrates the running application; see the
+[submission checklist](docs/submission_checklist.md).
 
 ![Visual inspection workspace](reports/figures/ui-desktop.png)
 
@@ -111,7 +112,6 @@ casting_data/casting_data/
 .\.venv\Scripts\python.exe -m casting_inspector.train --data casting_data/casting_data --seed 42 --threads 4
 .\.venv\Scripts\python.exe scripts/validate_and_report.py
 .\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe scripts/build_demo.py
 ```
 
 The first training run downloads standard ResNet-18 weights. Training overwrites
@@ -147,6 +147,10 @@ docker compose logs -f
 docker compose down
 ```
 
+The default host port is 8000. If another local server uses it, put
+`INSPECTOR_PORT=8001` in a local `.env` file before starting Compose, then open
+<http://127.0.0.1:8001/> and use port 8001 for health/inference requests.
+
 The container runs as a non-root user with a read-only filesystem, a bounded
 temporary directory, CPU/memory limits and one Uvicorn worker. It loads a local
 SHA-256-checked artifact at startup and warms up inference. Serving uses two
@@ -179,9 +183,9 @@ set for an unbiased final estimate.
 | `casting_inspector/api.py` | Upload API, lifecycle, health, validation/logging |
 | `artifacts/` | Complete trained model and metadata |
 | `reports/` | Manifest, metrics, predictions, plots, live HTTP evidence |
-| `docs/` | Architecture, decisions, errors, PDF report and demo |
+| `docs/` | Architecture, decisions, errors, report and submission checklist |
 | `tests/` | Real model/API consistency, upload boundaries and split isolation |
-| `scripts/` | Live verification, report and demo generation |
+| `scripts/` | API/report verification and browser checks |
 
 Framework references: [Torchvision ResNet-18](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet18.html),
 [scikit-learn logistic regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html),
