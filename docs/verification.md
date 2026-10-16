@@ -16,7 +16,7 @@ stored under `reports/`.
 | Integration suite | 16 passed; `reports/test-results.xml`. |
 | Browser interface | 12 checks passed in local Chrome: desktop/mobile, real predictions, uploads, drag and drop, downloads, reset, malformed files, errors, offline recovery and help; `reports/ui-verification.json`. |
 | Error analysis | All ten errors visually reviewed; `docs/error_analysis.md`. |
-| Docker execution | Docker Desktop installed; container build/run verification pending. |
+| Docker execution | Optional: image build and container health check passed. Container inference not separately verified. |
 
 The current pinned Starlette test adapter emits a deprecation warning; its
 integration checks passed. Factory acceptance, adversarial security testing and

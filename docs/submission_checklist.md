@@ -1,9 +1,7 @@
-# Submission checklist
+# Assessment deliverables
 
-Send the public repository URL and your own 2-3 minute recording of the running
-application. A video link or an MP4 attachment can be supplied separately.
-The model and technical documentation are already included in the repository;
-the raw dataset, local environment and installation downloads are excluded.
+The repository contains the implementation, trained model, evaluation evidence
+and deployment configuration listed below.
 
 | Requirement | Repository location |
 |---|---|
@@ -21,12 +19,3 @@ the raw dataset, local environment and installation downloads are excluded.
 | Inference integration tests | `tests/test_service.py` |
 | Repeatable API and browser verification | `scripts/validate_and_report.py`, `scripts/verify_ui.py` |
 | Checks performed and limits | `docs/verification.md` |
-| Your working demonstration | Send separately as an MP4 or shareable video link |
-
-The video should show actual image uploads and predictions in the running
-interface, one API request, and a brief explanation of model choice, evaluation
-and limitations. Show Docker running only after verifying the container.
-
-AI assistance was used to prepare the implementation. Be prepared to explain,
-modify and debug the submitted code during the interview, as the assessment
-requires.

@@ -6,9 +6,9 @@ FastAPI service, dataset audit, evaluation evidence and deployment files.
 
 Start with [measured results](reports/RESULTS.md), the
 [architecture diagram](docs/architecture.md), and the
-[technical explanation](docs/technical_decisions.md). A separate 2-3 minute
-screen recording demonstrates the running application; see the
-[submission checklist](docs/submission_checklist.md).
+[technical explanation](docs/technical_decisions.md). The
+[assessment report](docs/assessment_report.pdf) provides a formatted overview
+of the system, measured results and limitations.
 
 ![Visual inspection workspace](reports/figures/ui-desktop.png)
 
@@ -138,7 +138,7 @@ camera/domain with uncertain product independence. New lighting, orientation,
 part geometry, motion blur and new defect types need prospective testing.
 No factory operating threshold or SLA is established by this assessment.
 
-## Deployment and maintenance
+## Optional Docker deployment and maintenance
 
 ```powershell
 docker compose up --build -d
@@ -155,8 +155,9 @@ The container runs as a non-root user with a read-only filesystem, a bounded
 temporary directory, CPU/memory limits and one Uvicorn worker. It loads a local
 SHA-256-checked artifact at startup and warms up inference. Serving uses two
 Torch threads, one active model call, and a concurrency limit of 16. Scale
-replicas after measuring representative load. Container commands are provided;
-see `docs/verification.md` for what was actually tested in this environment.
+replicas after measuring representative load. The Docker image was built and its container health check passed. Container
+inference was not separately verified. See
+`docs/verification.md` for the verification scope.
 
 The service rejects unsupported media, malformed/truncated images, files above
 8 MiB, requests above the multipart body limit, images below 32px in either
@@ -198,3 +199,6 @@ real predictions, uploads, drag and drop, downloads and failure/recovery states.
 See `reports/ui-verification.json`. To repeat: install `playwright==1.64.0`
 and run `python scripts/verify_ui.py` with Chrome or Edge installed. The script
 starts and cleans up its own local server.
+
+The formatted PDF can be regenerated from the saved results without starting
+any service: `python scripts/validate_and_report.py --report-only`.

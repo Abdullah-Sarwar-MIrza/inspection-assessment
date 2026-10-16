@@ -1,12 +1,12 @@
-# Technical decisions and interview guide
+# Technical decisions
 
 **Why transfer learning?** Small labeled datasets benefit from existing visual
 features. ResNet-18 is a straightforward, maintainable CPU baseline. A frozen
 backbone avoids backpropagation cost and constrains overfitting; regularized
 logistic fitting is convex and easy to inspect. No claim is made that it beats
-a fine-tuned network. Consider fine-tuning the last block, a larger resolution,
-or MobileNet in a new validation comparison when compute and representative
-data permit it.
+a fine-tuned network. Alternative validation experiments include fine-tuning the last block,
+a larger input resolution, or MobileNet when compute and representative data
+permit a controlled comparison.
 
 **Why no object detector?** The labels are image-level Normal/Defective, without
 bounding boxes or masks. Classification directly matches the requirement.
@@ -46,8 +46,8 @@ establish independence of augmented views. Stronger claims need new data.
 **What does confidence mean?** The sigmoid head produces an uncalibrated
 defect score. The returned confidence is p(defect) for Defective and
 1-p(defect) for Normal. Class weighting and threshold selection can change
-probabilistic interpretation. Calibrate using a separate representative set
-and inspect reliability curves/Brier score if decisions depend on probability.
+probabilistic interpretation. Probability-dependent decisions require calibration on a separate representative
+set, assessed with reliability curves and a Brier score.
 
 **Accuracy versus latency?** The measured report establishes this model's
 operating point on this CPU. Larger images and fine-tuning may improve small
@@ -55,13 +55,13 @@ defect sensitivity, at higher compute cost. Quantization or ONNX could improve
 latency but require new numerical parity and accuracy checks. No alternative
 architecture speed/accuracy numbers are invented.
 
-**How would I debug a bad prediction?** Retrieve its request ID and model
-version, reproduce using the CLI, verify class mapping and shared preprocessing,
-inspect the source image and score relative to the threshold, then compare
-similar training cases. Have an operator review the label. Add corrected
-examples to a future training pool while keeping a new batch-separated test.
+**Prediction diagnostics.** Request IDs and model versions connect predictions
+with service logs. The CLI reproduces inference with shared preprocessing.
+Image review distinguishes input/lighting issues, label ambiguity and model
+errors; corrected labels require domain expertise. Any later model comparison
+uses a fresh batch-separated test set to avoid tuning to known failures.
 
-**What is needed for a real line?** Camera triggering and synchronization,
+**Production boundaries.** Camera triggering and synchronization,
 part tracking, blur/illumination checks, a fail-safe reject/manual review
 policy, authenticated transport, device-specific load testing, prospective
 acceptance criteria, drift monitoring and a controlled rollback process.
