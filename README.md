@@ -9,6 +9,8 @@ Start with [measured results](reports/RESULTS.md), the
 [technical explanation](docs/technical_decisions.md). The generated demonstration
 is `docs/demo.mp4`; narration and reproduction steps are in `docs/demo_script.md`.
 
+![Visual inspection workspace](reports/figures/ui-desktop.png)
+
 ## Setup and run
 
 Use Python 3.12. The supplied `artifacts/model.pt` contains the complete model;
@@ -21,6 +23,12 @@ python -m venv .venv
 ```
 
 On Linux/macOS use `.venv/bin/python` in place of `.\.venv\Scripts\python.exe`.
+Open **<http://127.0.0.1:8000/>** for the visual inspection workspace. Drag and
+drop a JPG/PNG, preview it, select **Inspect image**, and review the result.
+Reference images run a real prediction with one click. You can save the JSON
+result, check model readiness and open a brief usage guide. All interface
+assets are bundled locally, and the page uses the existing prediction API.
+
 Open <http://127.0.0.1:8000/docs> for interactive API documentation.
 
 ```powershell
@@ -178,3 +186,11 @@ set for an unbiased final estimate.
 Framework references: [Torchvision ResNet-18](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet18.html),
 [scikit-learn logistic regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html),
 [FastAPI uploads](https://fastapi.tiangolo.com/tutorial/request-files/).
+
+## Browser interface verification
+
+The interface was checked in local Chrome on desktop and mobile widths with
+real predictions, uploads, drag and drop, downloads and failure/recovery states.
+See `reports/ui-verification.json`. To repeat: install `playwright==1.64.0`
+and run `python scripts/verify_ui.py` with Chrome or Edge installed. The script
+starts and cleans up its own local server.

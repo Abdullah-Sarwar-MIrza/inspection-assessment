@@ -12,6 +12,7 @@ flowchart TD
     G --> H[Locked model and metadata / SHA-256]
     H --> I[One final test evaluation and error analysis]
     H --> J[FastAPI startup - integrity check and warmup]
+    R[Browser inspection workspace - upload or reference image] --> K
     K[JPEG or PNG multipart upload] --> L[Body limit / MIME / decode / dimension checks]
     L --> M[Shared resize and normalization]
     J --> N[Bounded CPU inference]

@@ -1,6 +1,8 @@
 """Bounded image upload API. Launch with uvicorn casting_inspector.api:app."""
 import asyncio
 import logging
+import json
+from pathlib import Path
 import os
 import time
 import uuid
@@ -9,6 +11,8 @@ from contextlib import asynccontextmanager
 import torch
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from .model import MAX_BYTES, Predictor, decode_image
@@ -28,6 +32,30 @@ async def lifespan(app):
 
 
 app = FastAPI(title="Casting Defect Inspector", version="1.0.0", lifespan=lifespan)
+WEB_DIR = Path(__file__).resolve().parent / "web"
+app.mount("/assets", StaticFiles(directory=WEB_DIR), name="assets")
+
+
+@app.get("/", include_in_schema=False)
+def inspection_workspace():
+    return FileResponse(WEB_DIR / "index.html", headers={"Cache-Control": "no-cache"})
+
+
+@app.get("/ui/info", include_in_schema=False)
+def workspace_info(request: Request):
+    predictor = getattr(request.app.state, "predictor", None)
+    if predictor is None:
+        raise HTTPException(503, "Model unavailable")
+    evaluation_path = Path(os.getenv("MODEL_DIR", "artifacts")) / "evaluation.json"
+    evaluation = json.loads(evaluation_path.read_text()) if evaluation_path.exists() else {}
+    # Never display saved benchmark results for a different artifact.
+    if evaluation.get("model_sha256") != predictor.metadata["sha256"]:
+        evaluation = {}
+    return {"ready": True, "model_version": predictor.metadata["model_version"],
+            "threshold": predictor.metadata["threshold"],
+            "test_accuracy": evaluation.get("test_accuracy"),
+            "test_images": evaluation.get("test_images")}
+
 
 
 class UploadBodyLimit:

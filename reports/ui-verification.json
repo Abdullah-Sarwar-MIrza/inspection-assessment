@@ -1,0 +1,24 @@
+{
+  "checks_passed": 12,
+  "checks": [
+    "Desktop layout, actual readiness and model-linked benchmark results",
+    "One-click normal sample sends real prediction",
+    "One-click defective sample renders real score and verdict",
+    "Downloaded JSON contains actual prediction and request ID",
+    "Reset clears preview, verdict and selection",
+    "Local file upload and manual inspection",
+    "Unsupported/corrupt uploads rejected without stale results",
+    "Drag-and-drop image inspection",
+    "Server error is visible and inspection can be retried",
+    "Usage dialog opens and closes using keyboard",
+    "Offline status disables inference; readiness recovery works",
+    "390px and 320px layouts; mobile prediction and usage help"
+  ],
+  "javascript_errors": [],
+  "browser": "Installed Chrome, headless; actual local model HTTP requests",
+  "screenshots": [
+    "reports/figures/ui-desktop.png",
+    "reports/figures/ui-result.png",
+    "reports/figures/ui-mobile.png"
+  ]
+}

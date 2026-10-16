@@ -15,3 +15,6 @@ reports/server-error.log
 reports/environment-freeze.txt
 *.zip
 .env
+
+reports/ui-server*.log
+reports/ui-browser*.log

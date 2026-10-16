@@ -37,3 +37,11 @@ production deployment. The dataset's pre-augmentation and missing part IDs
 limit the independence of the evaluation. See the README and error analysis.
 
 Demo video verified: 168.2 seconds, 1280x720 at 24 fps; frames decoded across all scenes and narration checked for non-silent audio. `reports/video_verification.json`.
+
+The visual inspection workspace was added at `/` and checked with real model
+requests in installed Chrome. All 12 browser checks passed, covering desktop
+and mobile layouts, normal/defective examples, uploads, drag and drop, JSON
+downloads, reset, invalid files, server errors, offline recovery and usage help.
+The image preview was visually checked to preserve the whole casting.
+See `reports/ui-verification.json` and `reports/figures/ui-*.png`.
+The 16 inference/API regression tests also passed after the interface was added.

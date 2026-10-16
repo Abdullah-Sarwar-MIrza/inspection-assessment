@@ -240,6 +240,8 @@ def main():
         np.quantile(samples, [0.025, 0.975], axis=0).T.tolist()))
     result["training_wall_seconds"] = time.perf_counter() - start
     save_json("reports/metrics.json", result)
+    save_json("artifacts/evaluation.json", {"model_sha256": model_hash,
+              "test_accuracy": result["test"]["accuracy"], "test_images": len(test)})
     errors = []
     with open("reports/test_predictions.csv", "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=["path", "label", "predicted", "defect_probability", "error_type"])
