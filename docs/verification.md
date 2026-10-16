@@ -18,6 +18,8 @@ stored under `reports/`.
 | Error analysis | All ten errors visually reviewed; `docs/error_analysis.md`. |
 | Docker execution | Optional: image build, healthy startup, readiness response and one real JPEG prediction passed; `reports/docker_verification.json`. |
 
+| Recorded demonstration | Supplied MP4; 3 minutes 51 seconds; original recording published as a [GitHub release asset](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4). Metadata and checksum: `reports/demo_video.json`. |
+
 The current pinned Starlette test adapter emits a deprecation warning; its
 integration checks passed. Factory acceptance, adversarial security testing and
 production load testing have not been performed. The dataset was already

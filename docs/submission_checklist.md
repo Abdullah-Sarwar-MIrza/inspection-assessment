@@ -19,3 +19,4 @@ and deployment configuration listed below.
 | Inference integration tests | `tests/test_service.py` |
 | Repeatable API and browser verification | `scripts/validate_and_report.py`, `scripts/verify_ui.py` |
 | Checks performed and limits | `docs/verification.md` |
+| Recorded demonstration | [Video download](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4); [details](demo.md) |

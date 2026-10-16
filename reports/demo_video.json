@@ -1,0 +1,16 @@
+{
+  "filename": "Technical Skills Assessment Demo.mp4",
+  "release_asset_name": "Technical-Skills-Assessment-Demo.mp4",
+  "duration_seconds": 230.97,
+  "size_bytes": 289816301,
+  "sha256": "4491798568b4a35590fa418c13fd923665a63ff7ce935af04856b68fe1adafc2",
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "resolution": [
+    1920,
+    1032
+  ],
+  "release_url": "https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/tag/assessment-demo",
+  "download_url": "https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4",
+  "original_recording": true
+}

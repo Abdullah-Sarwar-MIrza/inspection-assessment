@@ -10,6 +10,14 @@ Start with [measured results](reports/RESULTS.md), the
 [assessment report](docs/assessment_report.pdf) provides a formatted overview
 of the system, measured results and limitations.
 
+## Recorded demonstration
+
+**[Watch or download the recorded demonstration](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/download/assessment-demo/Technical-Skills-Assessment-Demo.mp4)**
+
+Duration: **3 minutes 51 seconds**. The original MP4 is available through the
+[GitHub release](https://github.com/Abdullah-Sarwar-MIrza/inspection-assessment/releases/tag/assessment-demo); it is hosted separately from Git source files
+because its size exceeds GitHub's normal per-file Git limit.
+
 ![Visual inspection workspace](reports/figures/ui-desktop.png)
 
 ## Setup and run

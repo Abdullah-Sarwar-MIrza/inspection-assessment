@@ -16,3 +16,7 @@ scripts
 .aws
 .codex
 .agents
+
+*.mp4
+
+*.rar
