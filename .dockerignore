@@ -1,0 +1,12 @@
+.venv
+.git
+casting_data
+casting_512x512
+__pycache__
+.pytest_cache
+reports
+docs
+tests
+scripts
+*.pdf
+*.zip

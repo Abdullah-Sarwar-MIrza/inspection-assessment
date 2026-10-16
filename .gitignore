@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+casting_data/
+casting_512x512/
+*.pdf
+!docs/assessment_report.pdf
+reports/demo_frames/
+reports/demo_audio/
+reports/cache/
+reports/training.log
+reports/server.log
+reports/server-error.log
+reports/environment-freeze.txt
+*.zip
+.env

@@ -1,0 +1,11 @@
+{
+  "duration_seconds": 168.21,
+  "size": [
+    1280,
+    720
+  ],
+  "fps": 23.99,
+  "decoded_sample_frames": 5,
+  "narration_audio": "Six non-silent local SAPI speech tracks, muxed as AAC",
+  "file_sha256": "78ba30a3cb7206fcdd6420b0e728806d93e30e0d9f94f4cda12a71c476bb0854"
+}

@@ -1,0 +1,14 @@
+{
+  "model_version": "resnet18-frozen-v1",
+  "sha256": "0803c1e5767cfb3ff0acb2a089184e10ca8a6e9ec4838b1bfb559785d169d7b0",
+  "image_size": 160,
+  "threshold": 0.3600000000000001,
+  "C": 0.1,
+  "seed": 42,
+  "backbone": "ResNet18 IMAGENET1K_V1 frozen",
+  "classes": [
+    "Normal",
+    "Defective"
+  ],
+  "confidence": "Uncalibrated sigmoid score"
+}

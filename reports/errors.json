@@ -1,0 +1,72 @@
+[
+  {
+    "path": "casting_data/casting_data/test/ok_front/cast_ok_0_1207.jpeg",
+    "label": 0,
+    "predicted": 1,
+    "defect_probability": 0.5425969958305359,
+    "error_type": "FP"
+  },
+  {
+    "path": "casting_data/casting_data/test/ok_front/cast_ok_0_259.jpeg",
+    "label": 0,
+    "predicted": 1,
+    "defect_probability": 0.9122022390365601,
+    "error_type": "FP"
+  },
+  {
+    "path": "casting_data/casting_data/test/ok_front/cast_ok_0_7839.jpeg",
+    "label": 0,
+    "predicted": 1,
+    "defect_probability": 0.7379165887832642,
+    "error_type": "FP"
+  },
+  {
+    "path": "casting_data/casting_data/test/ok_front/cast_ok_0_942.jpeg",
+    "label": 0,
+    "predicted": 1,
+    "defect_probability": 0.6057897210121155,
+    "error_type": "FP"
+  },
+  {
+    "path": "casting_data/casting_data/test/ok_front/cast_ok_0_9926.jpeg",
+    "label": 0,
+    "predicted": 1,
+    "defect_probability": 0.4195388853549957,
+    "error_type": "FP"
+  },
+  {
+    "path": "casting_data/casting_data/test/def_front/cast_def_0_1591.jpeg",
+    "label": 1,
+    "predicted": 0,
+    "defect_probability": 0.08909052610397339,
+    "error_type": "FN"
+  },
+  {
+    "path": "casting_data/casting_data/test/def_front/cast_def_0_1607.jpeg",
+    "label": 1,
+    "predicted": 0,
+    "defect_probability": 0.1760810911655426,
+    "error_type": "FN"
+  },
+  {
+    "path": "casting_data/casting_data/test/def_front/cast_def_0_2154.jpeg",
+    "label": 1,
+    "predicted": 0,
+    "defect_probability": 0.04443015530705452,
+    "error_type": "FN"
+  },
+  {
+    "path": "casting_data/casting_data/test/def_front/cast_def_0_2483.jpeg",
+    "label": 1,
+    "predicted": 0,
+    "defect_probability": 0.05400814488530159,
+    "error_type": "FN"
+  },
+  {
+    "path": "casting_data/casting_data/test/def_front/cast_def_0_3105.jpeg",
+    "label": 1,
+    "predicted": 0,
+    "defect_probability": 0.06667311489582062,
+    "error_type": "FN"
+  }
+]

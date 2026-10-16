@@ -1,0 +1,84 @@
+{
+  "health": {
+    "status": "ready",
+    "model_version": "resnet18-frozen-v1"
+  },
+  "requests": [
+    {
+      "image": "reports/examples/normal_1.jpg",
+      "status": 200,
+      "response": {
+        "predicted_class": "Normal",
+        "confidence": 0.9996863590204157,
+        "defect_probability": 0.0003136409795843065,
+        "threshold": 0.3600000000000001,
+        "model_version": "resnet18-frozen-v1",
+        "request_id": "62acf28634e545c4b23484ea68fa9931",
+        "latency_ms": 47.347
+      }
+    },
+    {
+      "image": "reports/examples/normal_2.jpg",
+      "status": 200,
+      "response": {
+        "predicted_class": "Normal",
+        "confidence": 0.9970885540824383,
+        "defect_probability": 0.0029114459175616503,
+        "threshold": 0.3600000000000001,
+        "model_version": "resnet18-frozen-v1",
+        "request_id": "1f0029a1ed1c456e998555142473a094",
+        "latency_ms": 31.594
+      }
+    },
+    {
+      "image": "reports/examples/defective_1.jpg",
+      "status": 200,
+      "response": {
+        "predicted_class": "Defective",
+        "confidence": 0.6455583572387695,
+        "defect_probability": 0.6455583572387695,
+        "threshold": 0.3600000000000001,
+        "model_version": "resnet18-frozen-v1",
+        "request_id": "72f5b78ecfa84762bfbd1447f9d231c0",
+        "latency_ms": 28.577
+      }
+    },
+    {
+      "image": "reports/examples/defective_2.jpg",
+      "status": 200,
+      "response": {
+        "predicted_class": "Defective",
+        "confidence": 0.8382956385612488,
+        "defect_probability": 0.8382956385612488,
+        "threshold": 0.3600000000000001,
+        "model_version": "resnet18-frozen-v1",
+        "request_id": "1f9bfe6cbc974ca6a225bc497da14dd5",
+        "latency_ms": 27.81
+      }
+    }
+  ],
+  "invalid_image": {
+    "status": 422,
+    "response": {
+      "detail": "Invalid or oversized image"
+    }
+  },
+  "latency": {
+    "samples": 50,
+    "warmup_requests": 5,
+    "http_round_trip_ms": {
+      "p50": 28.830949973780662,
+      "p95": 79.02342501911329
+    },
+    "decode_preprocess_infer_ms": {
+      "p50": 26.167,
+      "p95": 75.24859999999994
+    },
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "torch_threads": 2,
+    "device": "CPU",
+    "concurrency": 1,
+    "note": "Localhost sequential warm service; not production throughput or cold-start latency."
+  }
+}

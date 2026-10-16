@@ -1,0 +1,50 @@
+[
+  {
+    "image": "reports/examples/normal_1.jpg",
+    "source_image": "casting_data/casting_data/test/ok_front/cast_ok_0_10.jpeg",
+    "ground_truth": "Normal",
+    "prediction": {
+      "predicted_class": "Normal",
+      "confidence": 0.9996863590204157,
+      "defect_probability": 0.0003136409795843065,
+      "threshold": 0.3600000000000001,
+      "model_version": "resnet18-frozen-v1"
+    }
+  },
+  {
+    "image": "reports/examples/normal_2.jpg",
+    "source_image": "casting_data/casting_data/test/ok_front/cast_ok_0_1001.jpeg",
+    "ground_truth": "Normal",
+    "prediction": {
+      "predicted_class": "Normal",
+      "confidence": 0.9970885540824383,
+      "defect_probability": 0.0029114459175616503,
+      "threshold": 0.3600000000000001,
+      "model_version": "resnet18-frozen-v1"
+    }
+  },
+  {
+    "image": "reports/examples/defective_1.jpg",
+    "source_image": "casting_data/casting_data/test/def_front/cast_def_0_1059.jpeg",
+    "ground_truth": "Defective",
+    "prediction": {
+      "predicted_class": "Defective",
+      "confidence": 0.6455583572387695,
+      "defect_probability": 0.6455583572387695,
+      "threshold": 0.3600000000000001,
+      "model_version": "resnet18-frozen-v1"
+    }
+  },
+  {
+    "image": "reports/examples/defective_2.jpg",
+    "source_image": "casting_data/casting_data/test/def_front/cast_def_0_1063.jpeg",
+    "ground_truth": "Defective",
+    "prediction": {
+      "predicted_class": "Defective",
+      "confidence": 0.8382956385612488,
+      "defect_probability": 0.8382956385612488,
+      "threshold": 0.3600000000000001,
+      "model_version": "resnet18-frozen-v1"
+    }
+  }
+]
